@@ -143,16 +143,17 @@ AccelFXOS8700::Error AccelFXOS8700::read(V3* v, float* gravitySquared, float* gr
 	static const float GRAVITY = 9.82;*/
 
 	float convert = 1;
-	static const float CONVERT_ACCEL =  0.0001220703125f;  // = 1/8192
+	//static const float CONVERT_ACCEL =  0.0001220703125f;  // = 1/8192
+	static const float DIV = 8192.f;
 	switch(m_range) {
 		case 2:	
-			convert = 2.0f * CONVERT_ACCEL;
+			convert = 2.0f / DIV;
 			break;
 		case 4:
-			convert = 4.0f * CONVERT_ACCEL;
+			convert = 4.0f / DIV;
 			break;
 		default:
-			convert = 8.0f * CONVERT_ACCEL;
+			convert = 8.0f / DIV;
 			break;
 	}
 	v->x = float(accelX) * convert;
