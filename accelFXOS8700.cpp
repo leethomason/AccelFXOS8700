@@ -135,19 +135,7 @@ AccelFXOS8700::ErrorCode AccelFXOS8700::read(float* v, float* gravitySquared, fl
   	int16_t accelY = (int16_t)((ayhi << 8) | aylo) >> 2;
   	int16_t accelZ = (int16_t)((azhi << 8) | azlo) >> 2;
  
-	float convert = 1;
-	static const float DIV = 8192.f;
-	switch(m_range) {
-		case 2:	
-			convert = 2.0f / DIV;
-			break;
-		case 4:
-			convert = 4.0f / DIV;
-			break;
-		default:
-			convert = 8.0f / DIV;
-			break;
-	}
+	static const float convert = 1.0f / 4096.f;
 	v[0] = float(accelX) * convert;
 	v[1] = float(accelY) * convert;
 	v[2] = float(accelZ) * convert;

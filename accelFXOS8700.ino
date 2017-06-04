@@ -7,7 +7,7 @@ void setup() {
 	while(!Serial) delay(100);
 
 	Serial.println("Accel begin.");
-	AccelFXOS8700::ErrorCode e = accel.begin(2, 0x01e);
+	AccelFXOS8700::ErrorCode e = accel.begin(4, AccelFXOS8700::ADDRESS_PROP_SHIELD);
 
 	Serial.print("begin e=");
 	Serial.println((int)e);

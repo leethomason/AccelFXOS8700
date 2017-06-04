@@ -17,12 +17,17 @@ public:
 
 	AccelFXOS8700() {}
 
+	enum {
+		ADDRESS_ADAFRUIT = 0x1f,
+		ADDRESS_PROP_SHIELD = 0x1e
+	};
+
 	/** Start it up!
 		@param range 2, 4, or 8g
 		@param deviceAddress the IC address of the device. 
 			   0x1f for Adafruit (?) and 0x01e for the Teensy Prop Shield.
 	*/
-	ErrorCode begin(uint8_t range = 2, uint8_t deviceAddress = 0x1f);
+	ErrorCode begin(uint8_t range = 2, uint8_t deviceAddress = ADDRESS_ADAFRUIT);
 
 	/**
 		Read the accelerometer.
