@@ -17,8 +17,19 @@ public:
 
 	AccelFXOS8700() {}
 
+	/** Start it up!
+		@param range 2, 4, or 8g
+		@param deviceAddress the IC address of the device. 
+			   0x1f for Adafruit (?) and 0x01e for the Teensy Prop Shield.
+	*/
 	ErrorCode begin(uint8_t range = 2, uint8_t deviceAddress = 0x1f);
 
+	/**
+		Read the accelerometer.
+		@param v 				A vector of 3 floats, for the x, y, z result.
+		@param gravitySquared 	The gravity value squared. Fast to calculate.
+		@param gravity 			Gravity (in m/s^2)
+	*/
 	ErrorCode read(float* v, float* gravitySquared = 0, float* gravity = 0);
 
 private:
