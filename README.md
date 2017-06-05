@@ -22,7 +22,7 @@ Minimal code:
 AccelFXOS8700 accel;
 
 void setup() {
-	accel.begin(2, 0x01e);
+	accel.begin(AccelFXOS8700::RANGE_4G, AccelFXOS8700::ADDRESS_PROP_SHIELD);
 }
 
 void loop() {

@@ -7,7 +7,7 @@ void setup() {
 	while(!Serial) delay(100);
 
 	Serial.println("Accel begin.");
-	AccelFXOS8700::ErrorCode e = accel.begin(4, AccelFXOS8700::ADDRESS_PROP_SHIELD);
+	AccelFXOS8700::ErrorCode e = accel.begin(AccelFXOS8700::RANGE_4G, AccelFXOS8700::ADDRESS_PROP_SHIELD);
 
 	Serial.print("begin e=");
 	Serial.println((int)e);
@@ -19,7 +19,7 @@ void loop() {
 	float g = 0;
 
 	uint32_t t0 = micros();
-	AccelFXOS8700::ErrorCode rc0 = accel.read(v, 0, &g);
+	AccelFXOS8700::ErrorCode rc0 = accel.read(v, 0, 0);
 	uint32_t t1 = micros();
 	AccelFXOS8700::ErrorCode rc1 = accel.read(v, &g2, &g);
 	uint32_t t2 = micros();
